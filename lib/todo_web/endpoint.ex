@@ -50,5 +50,10 @@ defmodule TodoWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
+
+  if code_reloading? do
+    plug Tidewave
+  end
+
   plug TodoWeb.Router
 end
