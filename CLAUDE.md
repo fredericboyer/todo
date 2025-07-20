@@ -84,8 +84,7 @@ The project includes comprehensive documentation in the `docs/` directory:
 
 ### Project Planning
 - `docs/prd/PRD.md` - Product Requirements Document with detailed specifications, personas, and success metrics
-- `docs/tasks/README.md` - Task index showing all implementation tasks in execution order
-- `docs/tasks/*.md` - Individual task files with acceptance criteria and technical notes
+- **GitHub Project** - All implementation tasks are tracked in the [Todo GitHub Project](https://github.com/fredericboyer/todo/projects/1)
 
 ### Operational Checklists
 - `docs/accessibility-checklist.md` - WCAG 2.1 AA compliance checklist
@@ -94,19 +93,19 @@ The project includes comprehensive documentation in the `docs/` directory:
 - `docs/flyio-deploy-checklist.md` - Production deployment on fly.io
 - `docs/ci-cd-checklist.md` - CI/CD pipeline setup with GitHub Actions
 
-### Task Management
-Tasks follow a structured format with YAML front-matter:
-- `id`: Unique task identifier
-- `type`: epic | task
-- `status`: TODO | IN_PROGRESS | DONE
-- `parent`: Parent epic ID (if applicable)
-- `acceptance_criteria`: Clear completion requirements
-- `tech_notes`: Implementation guidance
 
 ## Git Workflow & Commit Guidelines
 
 ### Version Control
 This project uses Git with strict conventional commits and clean history requirements.
+
+### Pull Request Requirements
+**ALL changes must go through pull requests** - Direct pushes to main branch are prohibited.
+- Create a feature branch for your changes
+- Open a pull request against `main`
+- All PRs require review before merging
+- CI checks must pass before merging
+- Use squash and merge to maintain clean history
 
 ### Commit Message Format
 Use **Conventional Commits** specification for all commit messages:
@@ -137,21 +136,23 @@ Use **Conventional Commits** specification for all commit messages:
 **Examples:**
 ```bash
 feat(auth): add password reset functionality
-fix(tasks): prevent duplicate task creation
+fix(todo): prevent duplicate todo creation
 docs(readme): update installation instructions
-refactor(live): extract task component
+refactor(live): extract todo component
 ```
 
 ### Branching & Merging Strategy
 - **NO MERGE COMMITS ALLOWED** - Always use rebase to maintain clean history
-- Create feature branches from `main`: `git checkout -b feature/task-name`
-- Before pushing, always rebase on latest main:
+- **NO DIRECT PUSHES TO MAIN** - All changes must go through pull requests
+- Create feature branches from `main`: `git checkout -b feature/description`
+- Before creating PR, always rebase on latest main:
   ```bash
   git checkout main
   git pull origin main
-  git checkout feature/task-name
+  git checkout feature/description
   git rebase main
   ```
+- Push feature branch and create PR: `git push origin feature/description`
 
 ### Handling Conflicts
 When conflicts arise during rebase:
@@ -159,7 +160,7 @@ When conflicts arise during rebase:
 2. Validate changes with user when unsure about conflict resolution
 3. Stage resolved files: `git add <resolved-files>`
 4. Continue rebase: `git rebase --continue`
-5. Force push to feature branch: `git push --force-with-lease origin feature/task-name`
+5. Force push to feature branch: `git push --force-with-lease origin feature/description`
 
 ### Pull Request Guidelines
 - Squash related commits before creating PR
