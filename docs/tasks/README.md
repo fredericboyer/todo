@@ -8,7 +8,7 @@ This index provides a complete overview of all implementation tasks for the Todo
 | bun-migration | Migrate asset pipeline from ESBuild to Bun | task | WONT_DO |
 | cicd-epic | CI/CD pipeline implementation | epic | IN_PROGRESS |
 | github-actions | Create GitHub Actions workflow | task | DONE |
-| release-workflow | Create automated release workflow with changelog | task | TODO |
+| release-workflow | Create automated release workflow with changelog | task | DONE |
 | deployment-pipeline | Implement automated deployment pipeline | task | TODO |
 | auth-epic | Authentication and authorization system | epic | TODO |
 | setup-auth | Scaffold username/password authentication | task | TODO |

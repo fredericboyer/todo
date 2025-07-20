@@ -1,0 +1,39 @@
+# Elixir artifacts
+_build/
+deps/
+.elixir_ls/
+*.ez
+
+# Node
+assets/node_modules/
+
+# Static artifacts
+priv/static/assets/
+priv/static/cache_manifest.json
+
+# Secrets
+config/*.secret.exs
+config/prod.secret.exs
+.env*
+
+# Git
+.git/
+.gitignore
+
+# Editor files
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Test and development
+test/
+.github/
+docs/
+README.md
+CHANGELOG.md
+
+# Temporary files
+*.tmp
+*.log

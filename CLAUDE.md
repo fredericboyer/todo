@@ -118,7 +118,10 @@ Use **Conventional Commits** specification for all commit messages:
 <footer>
 ```
 
-**Important:** Never include "Generated with Claude Code" or similar attribution lines in commit messages.
+**Important:** 
+- Never include "Generated with Claude Code" or similar attribution lines in commit messages
+- Never mention tasks, epics, or task status updates in commit messages
+- Focus commit messages on the actual code changes, not project management updates
 
 **Types:**
 - `feat`: New feature

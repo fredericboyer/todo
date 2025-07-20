@@ -3,7 +3,7 @@ id: release-workflow
 title: Create automated release workflow with changelog
 parent: cicd-epic
 type: task
-status: TODO
+status: DONE
 acceptance_criteria:
   - Semantic versioning enforced
   - CHANGELOG.md automatically updated
