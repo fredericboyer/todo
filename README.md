@@ -59,7 +59,7 @@ lib/
 ## Documentation
 
 - [Product Requirements](docs/prd/PRD.md) - Detailed specifications
-- [Implementation Tasks](docs/tasks/README.md) - Development roadmap
+- [GitHub Project](https://github.com/fredericboyer/todo/projects/1) - Development roadmap and task tracking
 - [Checklists](docs/) - Security, accessibility, i18n, deployment guides
 
 ## Contributing
@@ -74,6 +74,8 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/):
 
 ### Git Workflow
 
+**All changes must go through pull requests** - Direct pushes to main are prohibited.
+
 ```bash
 # Create feature branch
 git checkout -b feature/your-feature
@@ -83,11 +85,14 @@ git checkout main && git pull
 git checkout feature/your-feature
 git rebase main
 
-# Push changes
+# Push changes and create PR
 git push --force-with-lease origin feature/your-feature
 ```
 
-**Important**: No merge commits allowed - always rebase to maintain clean history.
+**Important**: 
+- No direct pushes to main branch
+- All PRs require review before merging
+- No merge commits allowed - always rebase to maintain clean history
 
 ## Deployment
 
