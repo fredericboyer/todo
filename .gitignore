@@ -40,3 +40,6 @@ npm-debug.log
 
 # Ignore dialyzer PLT files
 /priv/plts/
+
+# Ignore environment variables file
+.env
