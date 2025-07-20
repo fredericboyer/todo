@@ -12,12 +12,18 @@
         "mcp-server-git"
       ]
     },
+    "playwright": {
+      "command": "bunx",
+      "args": [
+        "@playwright/mcp@latest"
+      ]
+    },
     "Ref": {
       "type": "http",
       "url": "https://api.ref.tools/mcp?apiKey=ref-35c1d543fb6314612026"
     },
     "sequential-thinking": {
-      "command": "npx",
+      "command": "bunx",
       "args": [
         "-y",
         "@modelcontextprotocol/server-sequential-thinking"

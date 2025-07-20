@@ -52,6 +52,7 @@ mix assets.deploy      # Build minified assets for production
 - `priv/repo/migrations/` - Database migrations
 - `assets/` - Frontend assets (CSS, JavaScript)
 - `test/` - Test files mirroring lib structure
+- `docs/` - Project documentation (see Documentation section below)
 
 ### Key Files
 - `lib/todo_web/router.ex` - HTTP routes and pipelines
@@ -76,6 +77,31 @@ This project uses Phoenix LiveView for building interactive features. When creat
 - Controller/LiveView tests in `test/todo_web/`
 - Use `ConnCase` for HTTP-related tests
 - Use `DataCase` for database-related tests
+
+## Documentation
+
+The project includes comprehensive documentation in the `docs/` directory:
+
+### Project Planning
+- `docs/prd/PRD.md` - Product Requirements Document with detailed specifications, personas, and success metrics
+- `docs/tasks/README.md` - Task index showing all implementation tasks in execution order
+- `docs/tasks/*.md` - Individual task files with acceptance criteria and technical notes
+
+### Operational Checklists
+- `docs/accessibility-checklist.md` - WCAG 2.1 AA compliance checklist
+- `docs/security-checklist.md` - Security best practices and OWASP compliance
+- `docs/i18n-checklist.md` - Internationalization implementation guide
+- `docs/flyio-deploy-checklist.md` - Production deployment on fly.io
+- `docs/ci-cd-checklist.md` - CI/CD pipeline setup with GitHub Actions
+
+### Task Management
+Tasks follow a structured format with YAML front-matter:
+- `id`: Unique task identifier
+- `type`: epic | task
+- `status`: TODO | IN_PROGRESS | DONE
+- `parent`: Parent epic ID (if applicable)
+- `acceptance_criteria`: Clear completion requirements
+- `tech_notes`: Implementation guidance
 
 ## Git Workflow & Commit Guidelines
 
