@@ -118,6 +118,8 @@ Use **Conventional Commits** specification for all commit messages:
 <footer>
 ```
 
+**Important:** Never include "Generated with Claude Code" or similar attribution lines in commit messages.
+
 **Types:**
 - `feat`: New feature
 - `fix`: Bug fix

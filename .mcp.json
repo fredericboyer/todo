@@ -1,5 +1,9 @@
 {
   "mcpServers": {
+    "context7": {
+      "type": "sse",
+      "url": "https://mcp.context7.com/sse"
+    },
     "fetch": {
       "command": "uvx",
       "args": [
@@ -17,10 +21,6 @@
       "args": [
         "@playwright/mcp@latest"
       ]
-    },
-    "Ref": {
-      "type": "http",
-      "url": "https://api.ref.tools/mcp?apiKey=ref-35c1d543fb6314612026"
     },
     "sequential-thinking": {
       "command": "bunx",

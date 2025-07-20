@@ -25,7 +25,7 @@ RULES (violating ANY invalidates your response):
 ✅ Reference specific file paths
 ✅ Provide migration strategies
 
-[Your detailed prompt here]
+Work on the GitHub Actions CI/CD setup as described in the associated task file.
 
 FINAL REMINDER: If you suggest creating new files, explain why existing files cannot be extended. If you recommend rewrites, justify why refactoring won't work.
 🔍 STEP 2: ANALYZE CURRENT SYSTEM
