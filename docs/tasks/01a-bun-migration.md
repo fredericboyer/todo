@@ -3,7 +3,7 @@ id: bun-migration
 title: Migrate asset pipeline from ESBuild to Bun
 parent: project-setup
 type: task
-status: TODO
+status: WONT_DO
 acceptance_criteria:
   - Bun hex package installed and configured
   - ESBuild and standalone Tailwind removed

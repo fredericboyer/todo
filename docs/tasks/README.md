@@ -4,8 +4,8 @@ This index provides a complete overview of all implementation tasks for the Todo
 
 | ID | Title | Type | Status |
 |---|---|---|---|
-| project-setup | Initial Phoenix project setup and configuration | epic | IN_PROGRESS |
-| bun-migration | Migrate asset pipeline from ESBuild to Bun | task | TODO |
+| project-setup | Initial Phoenix project setup and configuration | epic | DONE |
+| bun-migration | Migrate asset pipeline from ESBuild to Bun | task | WONT_DO |
 | cicd-epic | CI/CD pipeline implementation | epic | TODO |
 | github-actions | Create GitHub Actions workflow | task | TODO |
 | deployment-pipeline | Implement automated deployment pipeline | task | TODO |
@@ -37,7 +37,7 @@ This index provides a complete overview of all implementation tasks for the Todo
 ## Task Dependencies
 
 ### Phase 1: Foundation
-1. **project-setup** (IN_PROGRESS) - Base Phoenix application
+1. **project-setup** (DONE) - Base Phoenix application
 2. **cicd-epic** - CI/CD pipeline (establish automation early!)
    - github-actions → deployment-pipeline
 3. **auth-epic** - User authentication system
@@ -61,3 +61,4 @@ This index provides a complete overview of all implementation tasks for the Todo
 - Tasks within the same epic can often be worked on by different team members
 - Some epics can be started in parallel (e.g., security-epic alongside ui-epic)
 - The DONE example (project-setup) demonstrates the expected task completion state
+- Tasks marked as WONT_DO indicate decisions not to implement certain features

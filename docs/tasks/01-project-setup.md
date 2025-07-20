@@ -3,21 +3,17 @@ id: project-setup
 title: Initial Phoenix project setup and configuration
 parent: 
 type: epic
-status: IN_PROGRESS
+status: DONE
 acceptance_criteria:
   - Phoenix 1.8 project scaffolded
   - PostgreSQL database configured
   - Development environment documented
   - Git repository initialized with .gitignore
-  - ESBuild replaced with Bun for asset compilation
-  - Tailwind CSS configured via Bun
+  - Asset pipeline configured with ESBuild and Tailwind CSS v4
 tech_notes: |
   Use `mix phx.new todo --no-mailer --no-dashboard`
   Configure for fly.io deployment from start
-  Migrate from ESBuild to Bun:
-    1. Add {:bun, "~> 1.5", runtime: Mix.env() == :dev} to deps
-    2. Remove :esbuild and :tailwind dependencies
-    3. Configure Bun in config/config.exs with version "1.1.22"
+  Keep ESBuild and Tailwind CSS v4 for asset compilation
     4. Update mix.exs aliases to use mix bun
     5. Update dev.exs watchers for Bun
 ---
