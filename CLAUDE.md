@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Phoenix 1.8.0 web application built with Elixir. The project uses LiveView for interactive UI components, PostgreSQL for the database, and modern frontend tooling with ESBuild and Tailwind CSS v4. The UI components are built with daisyUI, providing a comprehensive component library with custom Phoenix/Elixir-inspired light and dark themes.
+This is a Phoenix 1.8.0 web application built with Elixir 1.17.3+ and Erlang/OTP 27.3+. The project uses LiveView for interactive UI components, PostgreSQL for the database, and modern frontend tooling with ESBuild and Tailwind CSS v4. The UI components are built with daisyUI, providing a comprehensive component library with custom Phoenix/Elixir-inspired light and dark themes.
 
 ## Essential Commands
 

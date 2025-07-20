@@ -1,0 +1,173 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  MIX_ENV: test
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Test on OTP ${{ matrix.otp }} / Elixir ${{ matrix.elixir }}
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        # Test on latest stable and previous minor version
+        otp: ['28.0', '27.3']
+        elixir: ['1.18.4', '1.17.3']
+    
+    services:
+      postgres:
+        image: postgres:16
+        ports: ['5432:5432']
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Elixir
+      uses: erlef/setup-beam@v1
+      id: beam
+      with:
+        otp-version: ${{ matrix.otp }}
+        elixir-version: ${{ matrix.elixir }}
+
+    - name: Restore dependencies cache
+      uses: actions/cache@v4
+      with:
+        path: deps
+        key: ${{ runner.os }}-mix-${{ steps.beam.outputs.elixir-version }}-${{ steps.beam.outputs.otp-version }}-${{ hashFiles('**/mix.lock') }}
+        restore-keys: ${{ runner.os }}-mix-
+
+    - name: Restore build cache
+      uses: actions/cache@v4
+      with:
+        path: _build
+        key: ${{ runner.os }}-build-${{ steps.beam.outputs.elixir-version }}-${{ steps.beam.outputs.otp-version }}-${{ hashFiles('**/mix.lock') }}
+        restore-keys: ${{ runner.os }}-build-
+
+    - name: Install dependencies
+      run: mix deps.get
+
+    - name: Check Formatting
+      run: mix format --check-formatted
+
+    - name: Compile without warnings
+      run: mix compile --warnings-as-errors
+
+    - name: Run tests with coverage
+      run: mix test --cover --export-coverage default
+      
+    - name: Generate coverage report
+      run: mix test.coverage
+
+  quality:
+    name: Code Quality
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Elixir
+      uses: erlef/setup-beam@v1
+      id: beam
+      with:
+        otp-version: '28.0'
+        elixir-version: '1.18.4'
+
+    - name: Restore dependencies cache
+      uses: actions/cache@v4
+      with:
+        path: deps
+        key: ${{ runner.os }}-mix-quality-${{ steps.beam.outputs.elixir-version }}-${{ steps.beam.outputs.otp-version }}-${{ hashFiles('**/mix.lock') }}
+        restore-keys: ${{ runner.os }}-mix-quality-
+
+    - name: Restore build cache
+      uses: actions/cache@v4
+      with:
+        path: _build
+        key: ${{ runner.os }}-build-quality-${{ steps.beam.outputs.elixir-version }}-${{ steps.beam.outputs.otp-version }}-${{ hashFiles('**/mix.lock') }}
+        restore-keys: ${{ runner.os }}-build-quality-
+
+    - name: Install dependencies
+      run: mix deps.get
+
+    - name: Restore PLT cache
+      uses: actions/cache@v4
+      id: plt-cache
+      with:
+        path: priv/plts
+        key: ${{ runner.os }}-plts-${{ steps.beam.outputs.elixir-version }}-${{ steps.beam.outputs.otp-version }}-${{ hashFiles('**/mix.lock') }}
+        restore-keys: ${{ runner.os }}-plts-
+
+    - name: Create PLTs
+      if: steps.plt-cache.outputs.cache-hit != 'true'
+      run: |
+        mkdir -p priv/plts
+        mix dialyzer --plt
+
+    - name: Run dialyzer
+      run: mix dialyzer --no-check
+
+  assets:
+    name: Assets
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Elixir
+      uses: erlef/setup-beam@v1
+      with:
+        otp-version: '28.0'
+        elixir-version: '1.18.4'
+
+    - name: Restore dependencies cache
+      uses: actions/cache@v4
+      with:
+        path: deps
+        key: ${{ runner.os }}-mix-assets-${{ hashFiles('**/mix.lock') }}
+        restore-keys: ${{ runner.os }}-mix-assets-
+
+    - name: Install dependencies
+      run: mix deps.get
+
+    - name: Restore asset build cache
+      uses: actions/cache@v4
+      with:
+        path: |
+          deps
+          _build
+          priv/static/assets
+        key: ${{ runner.os }}-assets-${{ hashFiles('**/mix.lock', 'assets/**') }}
+        restore-keys: ${{ runner.os }}-assets-
+
+    - name: Install esbuild and tailwind
+      run: mix do esbuild.install --if-missing, tailwind.install --if-missing
+
+    - name: Build assets
+      run: mix assets.deploy
+
+    - name: Check for outdated assets
+      run: |
+        if [ -n "$(git status --porcelain priv/static)" ]; then
+          echo "Asset compilation resulted in changes. Please run 'mix assets.deploy' and commit the changes."
+          git status --porcelain priv/static
+          exit 1
+        fi

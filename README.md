@@ -1,13 +1,14 @@
 # Todo
 
+[![CI](https://github.com/fredericboyer/todo/actions/workflows/ci.yml/badge.svg)](https://github.com/fredericboyer/todo/actions/workflows/ci.yml)
+
 A secure, accessible, and performant task management web application built with Elixir and Phoenix LiveView.
 
 ## Prerequisites
 
-- Elixir 1.15+
-- Erlang/OTP 26+
+- Elixir 1.17.3+
+- Erlang/OTP 27.3+
 - PostgreSQL 15+
-- Bun 1.0+ (for asset compilation)
 
 ## Quick Start
 

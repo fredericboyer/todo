@@ -3,7 +3,7 @@ id: github-actions
 title: Create GitHub Actions workflow
 parent: cicd-epic
 type: task
-status: TODO
+status: DONE
 acceptance_criteria:
   - Test suite runs on all PRs
   - Code coverage reporting

@@ -37,3 +37,6 @@ npm-debug.log
 
 # Ignore ElixirLS files that are produced by the Elixir Language Server.
 .elixir_ls/
+
+# Ignore dialyzer PLT files
+/priv/plts/

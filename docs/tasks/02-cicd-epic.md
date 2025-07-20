@@ -3,7 +3,7 @@ id: cicd-epic
 title: CI/CD pipeline implementation
 parent: 
 type: epic
-status: TODO
+status: IN_PROGRESS
 acceptance_criteria:
   - Automated testing on PRs
   - Security scanning integrated

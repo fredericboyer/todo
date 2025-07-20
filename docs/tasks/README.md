@@ -6,8 +6,8 @@ This index provides a complete overview of all implementation tasks for the Todo
 |---|---|---|---|
 | project-setup | Initial Phoenix project setup and configuration | epic | DONE |
 | bun-migration | Migrate asset pipeline from ESBuild to Bun | task | WONT_DO |
-| cicd-epic | CI/CD pipeline implementation | epic | TODO |
-| github-actions | Create GitHub Actions workflow | task | TODO |
+| cicd-epic | CI/CD pipeline implementation | epic | IN_PROGRESS |
+| github-actions | Create GitHub Actions workflow | task | DONE |
 | deployment-pipeline | Implement automated deployment pipeline | task | TODO |
 | auth-epic | Authentication and authorization system | epic | TODO |
 | setup-auth | Scaffold username/password authentication | task | TODO |
