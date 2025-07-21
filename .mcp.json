@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "brave-search": {
-      "command": "npx",
+      "command": "bunx",
       "args": [
         "-y",
         "@modelcontextprotocol/server-brave-search"
@@ -13,6 +13,10 @@
     "context7": {
       "type": "sse",
       "url": "https://mcp.context7.com/sse"
+    },
+    "deepwiki": {
+      "type": "sse",
+      "url": "https://mcp.deepwiki.com/sse"
     },
     "fetch": {
       "command": "uvx",
@@ -39,6 +43,13 @@
       "env": {
         "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
       }
+    },
+    "memory": {
+      "command": "bunx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ]
     },
     "playwright": {
       "command": "bunx",
