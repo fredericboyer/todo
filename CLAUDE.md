@@ -167,3 +167,54 @@ When conflicts arise during rebase:
 - Ensure linear history (no merge commits)
 - Run `mix format` and all tests before pushing
 - PR title should follow conventional commit format
+
+## MCP (Model Context Protocol) Servers
+
+This project is configured with various MCP servers that provide enhanced capabilities. Here's when to use each server:
+
+### Elixir/Phoenix Development
+- **tidewave** - Primary server for Elixir development. Use for:
+  - Evaluating Elixir code in project context
+  - Accessing Ecto schemas and database operations
+  - Reading project logs and debugging errors
+  - Finding module/function documentation and source locations
+  - Managing LiveView pages and interactions
+
+### Version Control
+- **git** - For Git operations within the project:
+  - Checking status, diffs, and commit history
+  - Creating branches and commits
+  - Note: For GitHub operations (PRs, issues), use the github server instead
+
+### GitHub Integration
+- **github** - For GitHub API operations:
+  - Creating/updating pull requests and issues
+  - Managing repository settings and workflows
+  - Searching code across repositories
+  - Managing notifications and reviews
+
+### Documentation & Learning
+- **context7** - For retrieving library documentation:
+  - Use when you need up-to-date docs for any library/framework
+  - Especially useful for Phoenix, Ecto, LiveView documentation
+- **deepwiki** - For GitHub repository documentation:
+  - Reading repository wikis and documentation
+  - Understanding project structure and conventions
+
+### Web Operations
+- **brave-search** - For web searches and local business lookups
+- **fetch** - For fetching and parsing web content
+- **playwright** - For browser automation and testing
+
+### Development Tools
+- **memory** - For maintaining knowledge graphs across sessions
+- **sequential-thinking** - For complex problem-solving requiring step-by-step analysis
+- **time** - For timezone conversions and time-related operations
+- **ide** - For VS Code integration (diagnostics, code execution)
+
+### Best Practices
+1. **Use tidewave first** for all Elixir/Phoenix specific operations
+2. **Prefer MCP tools over shell commands** when available (e.g., use git server instead of `git` commands)
+3. **Use Task tool for complex searches** that may require multiple rounds of searching
+4. **Check logs with tidewave** when debugging runtime errors
+5. **Use context7** for framework documentation before implementing new features
